@@ -1,3 +1,44 @@
 Context API
 ===========
 It helps avoiding prop drilling 
+
+Context API Usage 
+=================
+1.We need to define the context 
+const userContext = React.createContext();
+
+2.We need to wrap our top level cmponent in the and givit a value
+ <UserContext.Provider value={"Ruchir"}>
+ ... componets where we need to use the values passed form user context
+ </UserContext.Provider>
+
+3.Cosume it in the desidred componets by Consumer
+ <UserContext.Consumer>
+        {(value) => {
+          return (
+            <ProductContext.Consumer>
+              {(product) => {
+                return (
+                  <div>
+                    {" "}
+                    {value} - {product}
+                  </div>
+                );
+              }}
+            </ProductContext.Consumer>
+          );
+        }}
+      </UserContext.Consumer>
+
+4. Consuming through userContext Hook 
+ const user = useContext(UserContext);
+ const Product = useContext(ProductContext);
+  return (
+    <div className="App">
+      <h4>Hello from Component B</h4>
+      <div>Using useContext</div>
+      {user} - {Product}
+      <ComponentC />
+    </div>
+  );     
+
