@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 
 const initialState = {
@@ -7,20 +7,20 @@ const initialState = {
   error: ""
 };
 
-const postReducer = (state, action) => {
-  switch (action.type) {
-    case "loaded":
+const postReducer = (state, { type, payload }) => {
+  switch (type) {
+    case "FETCH_SUCCESS":
       return {
         ...state,
         loading: false,
-        postData: action.payload
+        postData: payload
       };
-    case "error":
+    case "FETCH_ERROR":
       return {
         ...state,
         loading: false,
         postData: [],
-        error: action.payload
+        error: payload
       };
     default:
       return state;
@@ -36,14 +36,14 @@ const DaraFetchingOne = () => {
       .then((response) => {
         setTimeout(() => {
           dispatch({
-            type: "loaded",
+            type: "FETCH_SUCCESS",
             payload: response
           });
         }, 5000);
       })
       .catch((e) => {
         dispatch({
-          type: "error",
+          type: "FETCH_ERROR",
           payload: "something went wrong"
         });
       });
@@ -51,7 +51,11 @@ const DaraFetchingOne = () => {
 
   return (
     <div>
-      {state.loading ? "loading data....." : JSON.stringify(state.postData)}
+      {state.loading && state.postData.length === 0
+        ? "loading data....."
+        : state.postData.length
+        ? JSON.stringify(state.postData)
+        : null}
       {state.error ? state.error : null}
     </div>
   );
