@@ -19,7 +19,7 @@ export default function UnderstndingReducer() {
   return (
     <div className="App">
       <h4>Understanding Usage of Reducer</h4>
-      <div>Count => {count}</div>
+      <div>Count - {count}</div>
       <button onClick={() => dispatch("increment")}>Increment</button>
       <button onClick={() => dispatch("decrement")}>Decrement</button>
       <button onClick={() => dispatch("reset")}>Reset</button>
