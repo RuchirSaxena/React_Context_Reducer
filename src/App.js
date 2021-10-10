@@ -7,6 +7,7 @@ import React, { useReducer } from "react";
 // import CounterNew from "./components/Counter";
 import ComponentD from "./components/ComponentD";
 import DaraFetchingOne from "./components/DataFetchingOne";
+import DataFectingUsingReducer from "./components/DataFectingUsingReducer";
 
 const initalState = 0;
 const reducer = (state, action) => {
@@ -49,7 +50,8 @@ export default function App() {
         <ComponentD />
        
       </CounterContext.Provider>*/}
-      <DaraFetchingOne />
+      {/* <DaraFetchingOne /> */}
+      <DataFectingUsingReducer />
     </div>
   );
 }
