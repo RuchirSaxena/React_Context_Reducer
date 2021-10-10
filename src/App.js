@@ -6,6 +6,7 @@ import React, { useReducer } from "react";
 // import ComplexReducer from "./components/ComplexReducer";
 // import CounterNew from "./components/Counter";
 import ComponentD from "./components/ComponentD";
+import DaraFetchingOne from "./components/DataFetchingOne";
 
 const initalState = 0;
 const reducer = (state, action) => {
@@ -41,12 +42,14 @@ export default function App() {
             <ComponentC />
           </h2>
         </ProductContext.Provider>
-      </UserContext.Provider> */}
+      </UserContext.Provider> 
       <CounterContext.Provider
         value={{ counterState: count, counterDispatch: dispatch }}
       >
         <ComponentD />
-      </CounterContext.Provider>
+       
+      </CounterContext.Provider>*/}
+      <DaraFetchingOne />
     </div>
   );
 }
